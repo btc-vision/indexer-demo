@@ -35,7 +35,8 @@ export class BlockScanner extends Logger {
 
     #lastProcessedHeight: bigint = 0n;
     #running: boolean = false;
-    #contractAddress: string;
+
+    readonly #contractAddress: string;
 
     public constructor(config: ScannerConfig) {
         super();
