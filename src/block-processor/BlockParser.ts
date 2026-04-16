@@ -15,14 +15,9 @@ export interface ParsedOP20TransferTransaction {
 
 export class BlockParser {
     readonly #contract: ReturnType<typeof getContract<IOP20Contract>>;
-    readonly #contractAddress: string;
 
-    public constructor(
-        contract: ReturnType<typeof getContract<IOP20Contract>>,
-        contractAddress: string,
-    ) {
+    public constructor(contract: ReturnType<typeof getContract<IOP20Contract>>) {
         this.#contract = contract;
-        this.#contractAddress = contractAddress;
     }
 
     /**
@@ -63,7 +58,6 @@ export class BlockParser {
     }
 
     #parseInteractionOP20Transfer(tx: InteractionTransaction): OPNetEvent<TransferredEvent>[] {
-        if (tx.contractAddress !== this.#contractAddress) return [];
         if (!tx.events) return [];
 
         const decoded = this.#contract.decodeEvents(tx.events);

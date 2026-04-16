@@ -35,6 +35,7 @@ export class BlockScanner extends Logger {
 
     #lastProcessedHeight: bigint = 0n;
     #running: boolean = false;
+    #contractAddress: string;
 
     public constructor(config: ScannerConfig) {
         super();
@@ -53,8 +54,10 @@ export class BlockScanner extends Logger {
             config.network,
         );
 
+        this.#contractAddress = config.contractAddress;
+
         this.#reorgDetector = new ReorgDetector(config.reorgBufferSize);
-        this.#blockParser = new BlockParser(contract, config.contractAddress);
+        this.#blockParser = new BlockParser(contract);
         this.#connectionManager = new ConnectionManager(
             this.#httpProvider,
             config.wsUrl,
@@ -170,6 +173,14 @@ export class BlockScanner extends Logger {
             this.info(
                 `Found an op20 transfer in ${tx.transaction.id}, ${tx.events.length} transfers`,
             );
+
+            if (this.#contractAddress && tx.transaction.contractAddress !== this.#contractAddress) {
+                this.warn(
+                    `Found a transaction that does not make a transaction with the filtered contract address: ${tx.transaction.contractAddress}!`,
+                );
+
+                continue;
+            }
 
             for (const event of tx.events) {
                 const transferEvent: OPNetEvent<TransferredEvent> =
