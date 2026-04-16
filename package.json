@@ -1,0 +1,63 @@
+{
+    "type": "module",
+    "name": "example-indexer",
+    "version": "1.0.0",
+    "description": "OPNet example indexer",
+    "main": "build/index.js",
+    "scripts": {
+        "watch": "tsc -p tsconfig.json --watch --extendedDiagnostics --listFiles --preserveWatchOutput --pretty",
+        "start": "cd build && node --optimize_for_size index",
+        "build": "tsc -p tsconfig.json --extendedDiagnostics --listFiles --preserveWatchOutput --pretty",
+        "test": "vitest",
+        "setup": "npm i && npm run build"
+    },
+    "engines": {
+        "node": ">=24.0.0 <26.0.0"
+    },
+    "homepage": "https://opnet.org",
+    "keywords": [
+        "opnet",
+        "opnet node",
+        "opnet indexer",
+        "bitcoin",
+        "btc",
+        "bitcoin-rpc",
+        "bitcoin transaction",
+        "transaction builder",
+        "transaction signer",
+        "bitcoin smart contracts"
+    ],
+    "author": "OP_NET",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/btc-vision/example-indexer.git"
+    },
+    "overrides": {
+        "typescript-eslint": {
+            "typescript": "$typescript"
+        }
+    },
+    "dependencies": {
+        "@btc-vision/bip32": "^7.1.2",
+        "@btc-vision/bitcoin": "^7.0.0",
+        "@btc-vision/ecpair": "^4.0.5",
+        "@btc-vision/hyper-express": "^6.17.4",
+        "@btc-vision/logger": "^1.0.8",
+        "@btc-vision/post-quantum": "^0.5.3",
+        "@btc-vision/transaction": "^1.8.6",
+        "@eslint/js": "^10.0.1",
+        "@noble/curves": "^2.0.1",
+        "@noble/secp256k1": "^3.0.0",
+        "opnet": "^1.8.13",
+        "typescript": "^5.9.3",
+        "typescript-eslint": "^8.58.0"
+    },
+    "devDependencies": {
+        "@types/node": "^25.5.0",
+        "@vitest/coverage-v8": "^4.1.2",
+        "eslint": "^10.1.0",
+        "prettier": "^3.8.1",
+        "vitest": "^4.1.2"
+    }
+}

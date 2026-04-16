@@ -1,0 +1,43 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "lib": ["ESNext", "ESNext.Decorators", "ESNext.Disposable"],
+
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "isolatedModules": true,
+        "verbatimModuleSyntax": true,
+        "forceConsistentCasingInFileNames": true,
+
+        "strict": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "strictBindCallApply": true,
+        "strictPropertyInitialization": true,
+        "noImplicitThis": true,
+        "useUnknownInCatchVariables": true,
+        "alwaysStrict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUncheckedIndexedAccess": true,
+        "noImplicitOverride": true,
+        "exactOptionalPropertyTypes": true,
+
+        "declaration": true,
+        "declarationMap": true,
+        "sourceMap": false,
+        "outDir": "build",
+        "rootDir": "src",
+        "incremental": true,
+        "tsBuildInfoFile": "build/.tsbuildinfo",
+
+        "skipLibCheck": true
+    },
+    "include": ["src/**/*.ts", "src/**/*.js", "src/**/*.cjs", "src/**/*.mts", "src/**/*.cts"],
+    "exclude": ["node_modules", "build", "dist"]
+}
